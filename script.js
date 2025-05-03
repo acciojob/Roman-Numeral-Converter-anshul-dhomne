@@ -1,33 +1,38 @@
 function convertToRoman(num) {
-    // Define the roman symbols as an array
+    // Extended Roman symbols array with subtractive notation
     const romanSymbols = [
-        ['M', 1000], 
-        ['D', 500], 
-        ['C', 100], 
-        ['L', 50], 
-        ['X', 10], 
-        ['V', 5], 
+        ['M', 1000],
+        ['CM', 900],
+        ['D', 500],
+        ['CD', 400],
+        ['C', 100],
+        ['XC', 90],
+        ['L', 50],
+        ['XL', 40],
+        ['X', 10],
+        ['IX', 9],
+        ['V', 5],
+        ['IV', 4],
         ['I', 1]
     ];
 
-    // Check for valid input
     if (num <= 0 || num > 100000) {
-        return "Invalid input"; // Handle out-of-range input
+        return "Invalid input";
     }
 
     let result = '';
 
-    // Loop through the roman symbols
     for (let i = 0; i < romanSymbols.length; i++) {
         const [symbol, value] = romanSymbols[i];
         while (num >= value) {
-            result += symbol; // Append the symbol to the result
-            num -= value; // Decrease the number by the value
+            result += symbol;
+            num -= value;
         }
     }
 
-    return result; // Return the final Roman numeral
+    return result;
 }
 
-// You can test your code by running the above function and printing it to console by uncommenting the following line
-// console.log(convertToRoman(36));
+// Example test
+console.log(convertToRoman(36)); // Output: XXXVI
+console.log(convertToRoman(944)); // Output: CMXLIV
