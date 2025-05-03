@@ -1,3 +1,7 @@
+function isValidInput(num) {
+    return num > 0 && num <= 100000;
+}
+
 function convertToRoman(num) {
     // Extended Roman symbols array with subtractive notation
     const romanSymbols = [
@@ -16,8 +20,9 @@ function convertToRoman(num) {
         ['I', 1]
     ];
 
-    if (num <= 0 || num > 100000) {
-        return "Invalid input";
+    // Validate input
+    if (!isValidInput(num)) {
+        return "Invalid input: Please enter a number between 1 and 100,000.";
     }
 
     let result = '';
@@ -32,7 +37,3 @@ function convertToRoman(num) {
 
     return result;
 }
-
-// Example test
-console.log(convertToRoman(36)); // Output: XXXVI
-console.log(convertToRoman(944)); // Output: CMXLIV
