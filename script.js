@@ -1,10 +1,6 @@
-function isValidInput(num) {
-    return num > 0 && num <= 100000;
-}
-
 function convertToRoman(num) {
-    // Extended Roman symbols array with subtractive notation
-    const romanSymbols = [
+    // Define the Roman numeral symbols and their corresponding values
+    const romanNumerals = [
         ['M', 1000],
         ['CM', 900],
         ['D', 500],
@@ -20,20 +16,19 @@ function convertToRoman(num) {
         ['I', 1]
     ];
 
-    // Validate input
-    if (!isValidInput(num)) {
-        return "Invalid input: Please enter a number between 1 and 100,000.";
-    }
-
     let result = '';
 
-    for (let i = 0; i < romanSymbols.length; i++) {
-        const [symbol, value] = romanSymbols[i];
-        while (num >= value) {
-            result += symbol;
-            num -= value;
+    // Loop through the romanNumerals array and subtract from num while appending the symbols
+    for (let i = 0; i < romanNumerals.length; i++) {
+        while (num >= romanNumerals[i][1]) {
+            result += romanNumerals[i][0];  // Append the Roman numeral symbol
+            num -= romanNumerals[i][1];    // Subtract the value from num
         }
     }
 
-    return result;
+    return result; // Return the Roman numeral string
 }
+
+// Example usage
+console.log(convertToRoman(14));   // Output: XIV
+console.log(convertToRoman(798));  // Output: DCCXCVIII
